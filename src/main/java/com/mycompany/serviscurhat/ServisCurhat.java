@@ -27,7 +27,6 @@ public class ServisCurhat {
         return null;
     }
 
-    // Method untuk memberi support (Virtual Hug)
     public static boolean giveSupport(Long id) {
         Post post = getPostById(id);
         if (post != null) {
@@ -56,7 +55,7 @@ public class ServisCurhat {
             System.out.print("Pilih opsi (1-4): ");
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Clear buffer
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
