@@ -10,28 +10,70 @@ public class Post {
     private int supportCount;
     private LocalDateTime createdAt;
 
-  
     public Post(Long id, String content, String mood, String nickname) {
         this.id = id;
-        this.content = content;
-        this.mood = mood;
-        this.nickname = (nickname == null || nickname.isBlank()) ? "Anonim" : nickname;
+        this.setContent(content);
+        this.setMood(mood);
+        this.setNickname(nickname);
         this.supportCount = 0;
         this.createdAt = LocalDateTime.now();
     }
 
- 
     public void addSupport() {
         this.supportCount++;
     }
 
-    
-    public Long getId() { return id; }
-    public String getContent() { return content; }
-    public String getMood() { return mood; }
-    public String getNickname() { return nickname; }
-    public int getSupportCount() { return supportCount; }
-    public LocalDateTime getCreatedAt() { return createdAt; }
+    public Long getId() {
+        return id;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public String getMood() {
+        return mood;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public int getSupportCount() {
+        return supportCount;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setContent(String content) {
+        if (content == null || content.isBlank()) {
+            this.content = "(Isi curhatan kosong)";
+        } else {
+            this.content = content;
+        }
+    }
+
+    public void setMood(String mood) {
+        if (mood == null || mood.isBlank()) {
+            this.mood = "💬 Umum";
+        } else {
+            this.mood = mood;
+        }
+    }
+
+    public void setNickname(String nickname) {
+        if (nickname == null || nickname.isBlank()) {
+            this.nickname = "Anonim";
+        } else {
+            this.nickname = nickname;
+        }
+    }
 
     @Override
     public String toString() {
