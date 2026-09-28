@@ -5,12 +5,18 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ServisCurhat {
-    
+
     private static List<Post> postList = new ArrayList<>();
     private static long idCounter = 1;
 
     public static Post createPost(String content, String mood, String nickname) {
         Post newPost = new Post(idCounter++, content, mood, nickname);
+        postList.add(newPost);
+        return newPost;
+    }
+
+    public static Post createPostBantuan(String content, String mood, String nickname, String kategori) {
+        Post newPost = new PostBantuan(idCounter++, content, mood, nickname, kategori);
         postList.add(newPost);
         return newPost;
     }
@@ -39,6 +45,7 @@ public class ServisCurhat {
 
         createPost("Progres tugas akhir rasanya stuck, butuh motivasi.", "🌧️ Butuh Masukan", "PenjelajahMalam");
         createPost("Terima kasih ke barista cafe kampus yang ramah hari ini!", "☕ Sekadar Luapan", "PemikirSendu");
+        createPostBantuan("Bingung bagi waktu antara kuliah dan kerja part-time.", "🌧️ Butuh Masukan", "AnakRantau", "Akademik");
 
         System.out.println("=== APLIKASI PLATFORM CURHAT (RUANG DENGAR) ===");
 
@@ -46,10 +53,11 @@ public class ServisCurhat {
             System.out.println("\nMenu Utama:");
             System.out.println("1. Tampilkan Semua Curhatan");
             System.out.println("2. Buat Curhatan Baru");
-            System.out.println("3. Beri Support (Virtual Hug)");
-            System.out.println("4. Edit Curhatan");
-            System.out.println("5. Keluar");
-            System.out.print("Pilih opsi (1-5): ");
+            System.out.println("3. Buat Curhatan Minta Saran");
+            System.out.println("4. Beri Support (Virtual Hug)");
+            System.out.println("5. Edit Curhatan");
+            System.out.println("6. Keluar");
+            System.out.print("Pilih opsi (1-6): ");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -80,6 +88,20 @@ public class ServisCurhat {
                     break;
 
                 case 3:
+                    System.out.print("Isi Curhatan: ");
+                    String contentB = scanner.nextLine();
+                    System.out.print("Mood: ");
+                    String moodB = scanner.nextLine();
+                    System.out.print("Nama Samaran: ");
+                    String nicknameB = scanner.nextLine();
+                    System.out.print("Kategori Masalah (contoh: Akademik/Keluarga/Pertemanan): ");
+                    String kategori = scanner.nextLine();
+
+                    createPostBantuan(contentB, moodB, nicknameB, kategori);
+                    System.out.println("✅ Curhatan minta saran berhasil diunggah!");
+                    break;
+
+                case 4:
                     System.out.print("Masukkan ID Curhatan yang ingin didukung: ");
                     long targetId = scanner.nextLong();
                     if (giveSupport(targetId)) {
@@ -89,7 +111,7 @@ public class ServisCurhat {
                     }
                     break;
 
-                case 4:
+                case 5:
                     System.out.print("Masukkan ID Curhatan yang ingin diedit: ");
                     long editId = scanner.nextLong();
                     scanner.nextLine();
@@ -113,7 +135,7 @@ public class ServisCurhat {
                     }
                     break;
 
-                case 5:
+                case 6:
                     running = false;
                     System.out.println("Terima kasih telah berbagi di Ruang Dengar.");
                     break;
