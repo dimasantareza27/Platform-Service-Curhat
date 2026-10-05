@@ -2,7 +2,7 @@ package com.mycompany.serviscurhat;
 
 import java.time.LocalDateTime;
 
-public class Post {
+public abstract class Post {
     private Long id;
     private String content;
     private String mood;
@@ -18,6 +18,8 @@ public class Post {
         this.supportCount = 0;
         this.createdAt = LocalDateTime.now();
     }
+
+    public abstract String getKategoriPost();
 
     public void addSupport() {
         this.supportCount++;
@@ -77,7 +79,7 @@ public class Post {
 
     @Override
     public String toString() {
-        return String.format("[%s] %s (~%s)\n\"%s\"\n🤗 Support: %d\n",
-                mood, nickname, createdAt.toLocalDate(), content, supportCount);
+        return String.format("(%s) [%s] %s (~%s)\n\"%s\"\n🤗 Support: %d\n",
+                getKategoriPost(), mood, nickname, createdAt.toLocalDate(), content, supportCount);
     }
 }

@@ -1,7 +1,6 @@
 package com.mycompany.serviscurhat;
 
 public class PostBantuan extends Post {
-
     private String kategori;
 
     public PostBantuan(Long id, String content, String mood, String nickname, String kategori) {
@@ -22,7 +21,7 @@ public class PostBantuan extends Post {
     }
 
     @Override
-    public String toString() {
-        return "🆘 [BUTUH SARAN - " + kategori + "]\n" + super.toString();
+    public String getKategoriPost() {
+        return "Butuh Saran - " + kategori;
     }
 }

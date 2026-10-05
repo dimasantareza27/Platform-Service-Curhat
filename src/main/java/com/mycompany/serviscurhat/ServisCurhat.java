@@ -10,12 +10,12 @@ public class ServisCurhat {
     private static long idCounter = 1;
 
     public static Post createPost(String content, String mood, String nickname) {
-        Post newPost = new Post(idCounter++, content, mood, nickname);
+        Post newPost = new PostUmum(idCounter++, content, mood, nickname);
         postList.add(newPost);
         return newPost;
     }
 
-    public static Post createPostBantuan(String content, String mood, String nickname, String kategori) {
+    public static Post createPost(String content, String mood, String nickname, String kategori) {
         Post newPost = new PostBantuan(idCounter++, content, mood, nickname, kategori);
         postList.add(newPost);
         return newPost;
@@ -45,7 +45,7 @@ public class ServisCurhat {
 
         createPost("Progres tugas akhir rasanya stuck, butuh motivasi.", "🌧️ Butuh Masukan", "PenjelajahMalam");
         createPost("Terima kasih ke barista cafe kampus yang ramah hari ini!", "☕ Sekadar Luapan", "PemikirSendu");
-        createPostBantuan("Bingung bagi waktu antara kuliah dan kerja part-time.", "🌧️ Butuh Masukan", "AnakRantau", "Akademik");
+        createPost("Bingung bagi waktu antara kuliah dan kerja part-time.", "🌧️ Butuh Masukan", "AnakRantau", "Akademik");
 
         System.out.println("=== APLIKASI PLATFORM CURHAT (RUANG DENGAR) ===");
 
@@ -97,7 +97,7 @@ public class ServisCurhat {
                     System.out.print("Kategori Masalah (contoh: Akademik/Keluarga/Pertemanan): ");
                     String kategori = scanner.nextLine();
 
-                    createPostBantuan(contentB, moodB, nicknameB, kategori);
+                    createPost(contentB, moodB, nicknameB, kategori);
                     System.out.println("✅ Curhatan minta saran berhasil diunggah!");
                     break;
 
